@@ -1,0 +1,29 @@
+.selectBtn {
+    background-color: #f0eff5;
+    width: 95px;
+    border-radius: 25px;
+    padding: 5px 0;
+    margin-bottom: 10px;
+}
+
+.selectBtn.active {
+    background-color: #fc0;
+}
+
+.label {
+    font-size: 15px;
+}
+
+.label.bold {
+    font-weight: 700;
+}
+
+.sideLabel {
+    font-size: 13px;
+    padding-right: 5px;
+}
+
+[dir="ltr"] .sideLabel {
+    padding-right: 0;
+    padding-left: 5px;
+}

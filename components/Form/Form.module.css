@@ -1,0 +1,98 @@
+.formWrapper {
+    max-width: 315px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 1.1em;
+    text-align: center;
+    font-weight: 700;
+    margin-bottom: 35px;
+}
+
+.subtitle {
+    color: #8b8b8d;
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.selectSimCard {
+    text-align: center;
+}
+
+.btnWrapper {
+    border: 1px solid #e6e6e8;
+    display: inline-block;
+    border-radius: 25px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.toggleBtn {
+    width: 110px;
+    border-radius: 25px;
+    font-size: 14px;
+    font-weight: 700;
+    padding-top: 7px;
+    padding-bottom: 7px;
+}
+
+.active {
+    background-color: #fc0;
+}
+
+.toggleButton {
+    max-width: 215px;
+    margin: 25px auto 45px;
+}
+
+
+
+
+.chargeBtnWrapper {
+    text-align: center;
+}
+
+
+
+
+.chooseBank {
+    background-color: #efeff4;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 25px;
+}
+
+.chooseBank h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+.bankList {
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
+}
+
+.bankWrapper {
+    text-align: center;
+}
+
+
+
+.bankBtn {
+    border: 1px solid #fc0;
+    border-radius: 8px;
+    width: 45px;
+    height: 45px;
+    background-position: 50%;
+    background-size: cover;
+    transition: filter .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+}
+
+.bankBtn.deactive {
+    filter: grayscale(100%);
+    opacity: .6;
+}

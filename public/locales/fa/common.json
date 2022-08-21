@@ -1,0 +1,42 @@
+{
+  "businessCustomer": "مشترکین سازمانی",
+  "cart": "سبد خرید",
+  "profile": "پروفایل",
+  "changeLanguage": "تغییر زبان",
+  "buyCharge": "خرید آنلاین شارژ ایرانسل",
+  "selectSimType": "نوع سیم‌کارت",
+  "simTypes": {
+    "prepaid": "اعتباری",
+    "postpaid": "دائمی"
+  },
+  "wowCharge": "شارژ شگفت‌انگیز",
+  "chargeTypes": {
+    "wow": "شگفت‌انگیز",
+    "normal": "معمولی"
+  },
+  "mobileNumber": "شماره تلفن همراه",
+  "chargeAmount": "مبلغ شارژ",
+  "chargeAmountWithTax": "مبلغ شارژ (+مالیات)",
+  "chargeAmountWithTaxLong": "مبلغ شارژ (با احتساب مالیات بر ارزش افزوده)",
+  "email": "ایمیل",
+  "emailIsOptional": "ایمیل (اختیاری)",
+  "chooseBankAndPay": "انتخاب بانک و پرداخت",
+  "payAndCharge": "پرداخت و شارژ",
+  "canel": "انصراف",
+  "finalInvoice": "فاکتور نهایی",
+  "sendChargeDirectTo": "مستقیم به شماره",
+  "cashbackReward": "پاداش خرید",
+  "chargeType": "نوع شارژ",
+  "bankName": "نام بانک",
+  "invoiceFooter": "با پرداخت از درگاه بانکی، معادل ۱ درصد از مبلغ خریدتان (بدون احتساب مالیات بر ارزش افزوده) به عنوان پاداش نقدی خرید به حساب جیب جت شما اضافه خواهد شد. شما می‌توانید از طریق سوپر اپلیکیشن ایرانسل من به حساب جیب جت خود دسترسی داشته باشید.",
+  "currency": "ریال",
+  "currencySign": "ریال",
+  "otherPrices": "سایر مبالغ",
+  "chargeAmountInRials": "مبلغ شارژ به ریال",
+  "min": "حداقل",
+  "max": "حداکثر",
+  "and": "و",
+  "chooseBank": "انتخاب بانک",
+  "invalidMobile": "شماره موبایل معتبر نیست!",
+  "invalidAmount": "مبلغ شارژ را اصلاح کنید!"
+}

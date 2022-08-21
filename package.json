@@ -6,8 +6,15 @@
     "start": "next start"
   },
   "dependencies": {
+    "bootstrap": "^5.2.0",
+    "i18n-next": "^0.0.4",
     "next": "latest",
+    "next-i18next": "^11.3.0",
     "react": "17.0.2",
-    "react-dom": "17.0.2"
+    "react-dom": "17.0.2",
+    "react-icons": "^4.4.0"
+  },
+  "devDependencies": {
+    "sass": "^1.54.4"
   }
 }

@@ -1,0 +1,42 @@
+{
+  "businessCustomer": "Business",
+  "cart": "Cart",
+  "profile": "Profile",
+  "changeLanguage": "Change Language",
+  "buyCharge": "Irancell E-Charge",
+  "selectSimType": "SIM card type",
+  "simTypes": {
+    "prepaid": "Prepaid",
+    "postpaid": "Postpaid"
+  },
+  "wowCharge": "Wow Recharge",
+  "chargeTypes": {
+    "wow": "Wow",
+    "normal": "Normal"
+  },
+  "mobileNumber": "Mobile Number",
+  "chargeAmount": "Charge Amount",
+  "chargeAmountWithTax": "Charge Amount (+Tax)",
+  "chargeAmountWithTaxLong": "Charge Amount (Including VAT)",
+  "email": "Email",
+  "emailIsOptional": "Email (Optional)",
+  "chooseBankAndPay": "Select bank & make payment",
+  "payAndCharge": "Payment & Recharge",
+  "canel": "Cancel",
+  "finalInvoice": "Final Invoice",
+  "sendChargeDirectTo": "Direct to number",
+  "cashbackReward": "Cashback Reward",
+  "chargeType": "Charge Type",
+  "bankName": "Bank Name",
+  "invoiceFooter": "An additional 1% of the amount that you pay (excl. VAT) will be deposited in your Jibjet account as a free cashback reward. Your Jibjet can be accessed through the MyIrancell Superapp.",
+  "currency": "Rials",
+  "currencySign": "IRR",
+  "otherPrices": "Other",
+  "chargeAmountInRials": "Charge amount in Rials",
+  "min": "Minimum",
+  "max": "Maximum",
+  "and": "and",
+  "chooseBank": "Bank selection",
+  "invalidMobile": "Invalid mobile number!",
+  "invalidAmount": "Invalid charge amount"
+}
