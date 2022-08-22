@@ -28,13 +28,22 @@ const ChargeList = () => {
   ];
 
   function handleChargeAmountChange(e) {
-    const amount = e.target.value;
-    setChargeAmount(amount);
+    const amount = e.target.value.replace(/,/g, '');
+
+    if (amount <= maxCharge) {
+      setChargeAmount(amount);
+    } else {
+      setChargeAmount(chargeAmount);
+    }
   }
 
   function handleChargeAmountClick(amount) {
     setChargeAmount(amount ?? chargeAmount);
     setManualChargeAmount(amount ? false : true);
+  }
+
+  function currencyFormatter(amount) {
+    return amount.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   }
 
   return (
@@ -71,7 +80,7 @@ const ChargeList = () => {
             classNames="mt-35"
             id="amount"
             onChange={handleChargeAmountChange}
-            value={chargeAmount}
+            value={currencyFormatter(chargeAmount)}
             ltr
           />
           <Alert>

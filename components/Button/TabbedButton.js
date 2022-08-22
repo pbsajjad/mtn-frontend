@@ -1,16 +1,14 @@
 import styles from "./TabbedButton.module.css";
 
-const TabbedButton = ({ title, description, extraInfo }) => {
+const TabbedButton = ({ label, prepaid, active, onClick }) => {
   return (
-    <div className={styles.wrapper}>
-      <h3 className={styles.title}>
-        {title}
-        {extraInfo ? (
-          <span className={styles.hintIcon} title={extraInfo}></span>
-        ) : null}
-      </h3>
-      <p className={styles.description}>{description}</p>
-    </div>
+    <button
+      className={`${styles.btn} ${active ? styles.active : ""}`}
+      onClick={() => onClick(prepaid)}
+      type="button"
+    >
+      {label}
+    </button>
   );
 };
 

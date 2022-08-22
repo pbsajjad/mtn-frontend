@@ -11,7 +11,11 @@
 }
 
 .label {
-    font-size: 15px;
+    font-size: 0.9375em;
+}
+
+[dir="ltr"] .label {
+    font-size: 0.8125em;
 }
 
 .label.bold {
@@ -19,8 +23,12 @@
 }
 
 .sideLabel {
-    font-size: 13px;
+    font-size: 0.8125em;
     padding-right: 5px;
+}
+
+[dir="ltr"] .sideLabel {
+    font-size: 0.6875em;
 }
 
 [dir="ltr"] .sideLabel {

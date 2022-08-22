@@ -7,6 +7,7 @@ const SelectButton = ({value, label, sideLabel, disabled, active, bold, onClick}
         className={`${styles.selectBtn} ${active ? styles.active : ''}`}
         onClick={() => onClick(value)}
         disabled={disabled}
+        type="button"
       >
         <span className={`${styles.label} ${bold ? styles.bold : ''}`}>{label}</span>
         {

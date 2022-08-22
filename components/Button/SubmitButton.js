@@ -2,7 +2,7 @@ import styles from "./SubmitButton.module.css";
 
 const SubmitButton = ({ label, submitted, onClick }) => {
   return (
-    <button className={`${styles.btn} ${styles.primary}`} onClick={onClick}>
+    <button className={`${styles.btn} ${styles.primary}`} onClick={onClick} type="sumbit">
       <span>
         {submitted ? (
           <svg

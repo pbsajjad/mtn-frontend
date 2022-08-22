@@ -1,5 +1,6 @@
 import { useState, useContext } from "react";
 import { useTranslation } from "next-i18next";
+import { useRouter } from "next/router";
 
 import AppContext from "../../context/AppContext";
 
@@ -8,13 +9,17 @@ import { BsExclamationTriangle } from "react-icons/bs";
 import TextInput from "./TextInput";
 import ChargeList from "./ChargeList";
 import ToggleButton from "../Button/ToggleButton";
+import TabbedButton from "../Button/TabbedButton";
 import SubmitButton from "../Button/SubmitButton";
+import BankButton from "../Button/BankButton";
 import Alert from "../Alert/Alert";
 
 import styles from "./Form.module.css";
 
 const Form = () => {
+  let [apiResult, setApiResult] = useState({});
   const [error, setError] = useState("");
+  const router = useRouter();
 
   const { t } = useTranslation("common");
   const {
@@ -23,34 +28,27 @@ const Form = () => {
       email,
       bankName,
       chargeAmount,
-      manualChargeAmount,
       prepaid,
       wowCharge,
       submitted,
       valid
     },
+    constants: { minCharge, maxCharge },
     setMobile,
     setEmail,
     setChargeAmount,
     setManualChargeAmount,
     setPrepaid,
     setWowCharge,
+    setBankName,
     setSubmitted,
     setValid
   } = useContext(AppContext);
 
-  const chargeAmounts = [
-    { value: 10000, wowCharge: false },
-    { value: 20000, wowCharge: false },
-    { value: 50000, wowCharge: true },
-    { value: 100000, wowCharge: true },
-    { value: 200000, wowCharge: true }
-  ];
-
   function handleMobileChange(e) {
     const mobile = e.target.value;
 
-    if (mobile.match(/[0-9]/g) && mobile.length <= 11) {
+    if (/[0-9]/g.test(mobile) && mobile.length <= 11) {
       setMobile(mobile);
     }
   }
@@ -65,44 +63,64 @@ const Form = () => {
     setChargeAmount(50000);
   }
 
+  function handleBankClick(name) {
+    setBankName(name);
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
-    setSubmitted(true);
-    console.log("submitted");
-    fetch("http://localhost:5500/api/validate", {
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json"
-      },
-      method: "POST",
-      body: JSON.stringify({ mobile, email, chargeAmount })
-    })
-      .then(res => res.json())
-      .then(data => {
-        if (!valid) {
-          setError(data.errorKey);
+    const isValid = false;
+
+    if (!/09[0-9]{9}/g.test(mobile)) {
+      setError("invalidMobile");
+    } else if (!(minCharge <= chargeAmount && chargeAmount <= maxCharge)) {
+      setError("invalidAmount");
+    } else if (
+      email &&
+      !/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)
+    ) {
+      setError("invalidEmail");
+    } else {
+      isValid = true;
+      setError("");
+    }
+
+    if (isValid) {
+      setSubmitted(true);
+      setValid(true);
+
+      fetch(
+        `https://joyous-sweater-fish.cyclic.app/api/validate?lang=${router.locale}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json"
+          },
+          method: "POST",
+          body: JSON.stringify({ mobile, email, chargeAmount })
         }
-      });
+      )
+        .then(res => res.json())
+        .then(data => {
+          if (!data.valid) {
+            setError(data.errorKey);
+          } else {
+            setSubmitted(false);
+            setApiResult(data);
+            setBankName(data.banks[0]?.name);
+          }
+        });
+    }
   }
 
   return (
-    <div className={styles.formWrapper}>
+    <form className={styles.formWrapper} autoComplete="off">
       <h1 className={styles.title}>{t("buyCharge")}</h1>
       <div className={styles.selectSimCard}>
         <h3 className={styles.subtitle}>{t("selectSimType")}</h3>
         <div className={styles.btnWrapper}>
-          <button
-            className={`${styles.toggleBtn} ${prepaid ? styles.active : ""}`}
-            onClick={() => setPrepaid(true)}
-          >
-            {t("simTypes.prepaid")}
-          </button>
-          <button
-            className={`${styles.toggleBtn} ${!prepaid ? styles.active : ""}`}
-            onClick={() => setPrepaid(false)}
-          >
-            {t("simTypes.postpaid")}
-          </button>
+          <TabbedButton label={t("simTypes.prepaid")} prepaid={true} active={prepaid} onClick={setPrepaid} />
+          <TabbedButton label={t("simTypes.postpaid")} prepaid={false} active={!prepaid} onClick={setPrepaid} />
         </div>
       </div>
 
@@ -120,6 +138,7 @@ const Form = () => {
         id="mobileNumber"
         onChange={handleMobileChange}
         value={mobile}
+        type={error === 'invalidMobile' ? 'danger' : ''}
         ltr
       />
 
@@ -130,11 +149,12 @@ const Form = () => {
 
       <TextInput
         text={t("emailIsOptional")}
-        inputMode="text"
+        inputMode="email"
         classNames="mt-35"
         id="emailOptional"
         onChange={handleEmailChange}
         value={email}
+        type={error === 'invalidEmail' ? 'danger' : ''}
         ltr
       />
 
@@ -142,29 +162,22 @@ const Form = () => {
         <div className={styles.chooseBank}>
           <h4>{t("chooseBank")}:</h4>
           <div className={styles.bankList}>
-            <div className={styles.bankWrapper}>
-              <button
-                className={styles.bankBtn}
-                style={{
-                  backgroundImage: `url('https://apishop.irancell.ir/static/v2/images/bankIcon/PSMN.png')`
-                }}
-              ></button>
-            </div>
-            <div className={styles.bankWrapper}>
-              <button
-                className={`${styles.bankBtn} ${styles.deactive}`}
-                style={{
-                  backgroundImage: `url('https://apishop.irancell.ir/static/v2/images/bankIcon/MLT.png')`
-                }}
-              ></button>
-            </div>
+            {apiResult.banks?.map(bank => (
+              <BankButton
+                key={bank.id}
+                name={bank.name}
+                imageURL={bank.imageURL}
+                active={bankName === bank.name}
+                onClick={handleBankClick}
+              />
+            ))}
           </div>
         </div>
       ) : null}
 
       <div className="mt-20">
         <SubmitButton
-          label={t("chooseBankAndPay")}
+          label={valid ? t("payAndCharge") : t("chooseBankAndPay")}
           submitted={submitted}
           onClick={handleSubmit}
         />
@@ -174,7 +187,7 @@ const Form = () => {
           <BsExclamationTriangle /> <span>{t(error)}</span>
         </Alert>
       ) : null}
-    </div>
+    </form>
   );
 };
 

@@ -10,7 +10,7 @@ import "../styles/global.css";
 function App({ Component, pageProps }) {
   const [mobile, setMobile] = useState("09");
   const [email, setEmail] = useState("");
-  const [bankName, setsetBankName] = useState("");
+  const [bankName, setBankName] = useState("");
   const [chargeAmount, setChargeAmount] = useState(20000);
   const [manualChargeAmount, setManualChargeAmount] = useState(false);
   const [prepaid, setPrepaid] = useState(true);
@@ -42,7 +42,7 @@ function App({ Component, pageProps }) {
     setWowCharge,
     setSubmitted,
     setValid,
-    setsetBankName
+    setBankName
   };
 
   return (

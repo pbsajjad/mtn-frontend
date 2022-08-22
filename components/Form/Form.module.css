@@ -29,33 +29,14 @@
     margin-right: auto;
 }
 
-.toggleBtn {
-    width: 110px;
-    border-radius: 25px;
-    font-size: 14px;
-    font-weight: 700;
-    padding-top: 7px;
-    padding-bottom: 7px;
-}
-
-.active {
-    background-color: #fc0;
-}
-
 .toggleButton {
     max-width: 215px;
     margin: 25px auto 45px;
 }
 
-
-
-
 .chargeBtnWrapper {
     text-align: center;
 }
-
-
-
 
 .chooseBank {
     background-color: #efeff4;
@@ -75,24 +56,3 @@
     grid-template-columns: auto auto auto auto auto;
 }
 
-.bankWrapper {
-    text-align: center;
-}
-
-
-
-.bankBtn {
-    border: 1px solid #fc0;
-    border-radius: 8px;
-    width: 45px;
-    height: 45px;
-    background-position: 50%;
-    background-size: cover;
-    transition: filter .5s ease-in-out;
-    transition: opacity .5s ease-in-out;
-}
-
-.bankBtn.deactive {
-    filter: grayscale(100%);
-    opacity: .6;
-}
