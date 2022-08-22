@@ -55,3 +55,7 @@
 [dir="ltr"] .input:focus+.label {
     transform: translate(6px, 15%) scale(.75)
 }
+
+[dir="ltr"] .input.shrink+.label {
+    transform: translate(6px, 15%) scale(.75)
+}
