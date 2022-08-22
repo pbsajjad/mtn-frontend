@@ -1,4 +1,5 @@
 {
+  "metaTitle": "Irancell Online Shop",
   "businessCustomer": "Business",
   "cart": "Cart",
   "profile": "Profile",
@@ -38,5 +39,6 @@
   "and": "and",
   "chooseBank": "Bank selection",
   "invalidMobile": "Invalid mobile number!",
-  "invalidAmount": "Invalid charge amount"
+  "invalidAmount": "Invalid charge amount",
+  "invalidEmail": "Invalid email address"
 }

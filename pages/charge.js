@@ -2,15 +2,20 @@ import Head from "next/head";
 import Link from "next/link";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
+import { useTranslation } from "next-i18next";
+
+import Layout from "../components/Layout/Layout";
 import Card from "../components/Card/Card";
 import Form from "../components/Form/Form";
 import Invoice from "../components/Invoice/Invoice";
 
-export default function Home() {
+export default function Charge() {
+  const { t } = useTranslation("common");
+
   return (
-    <>
+    <Layout>
       <Head>
-        <title>Irancell</title>
+        <title>{t("metaTitle")}</title>
       </Head>
 
       <div className="container">
@@ -25,7 +30,7 @@ export default function Home() {
           </div>
         </Card>
       </div>
-    </>
+    </Layout>
   );
 }
 

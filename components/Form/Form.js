@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { useTranslation } from "next-i18next";
 
 import AppContext from "../../context/AppContext";
@@ -14,6 +14,8 @@ import Alert from "../Alert/Alert";
 import styles from "./Form.module.css";
 
 const Form = () => {
+  const [error, setError] = useState("");
+
   const { t } = useTranslation("common");
   const {
     state: {
@@ -24,7 +26,8 @@ const Form = () => {
       manualChargeAmount,
       prepaid,
       wowCharge,
-      submitted
+      submitted,
+      valid
     },
     setMobile,
     setEmail,
@@ -32,7 +35,8 @@ const Form = () => {
     setManualChargeAmount,
     setPrepaid,
     setWowCharge,
-    setSubmitted
+    setSubmitted,
+    setValid
   } = useContext(AppContext);
 
   const chargeAmounts = [
@@ -71,10 +75,14 @@ const Form = () => {
         "Content-Type": "application/json"
       },
       method: "POST",
-      body: JSON.stringify({ prepaid })
+      body: JSON.stringify({ mobile, email, chargeAmount })
     })
       .then(res => res.json())
-      .then(console.log);
+      .then(data => {
+        if (!valid) {
+          setError(data.errorKey);
+        }
+      });
   }
 
   return (
@@ -130,27 +138,29 @@ const Form = () => {
         ltr
       />
 
-      <div className={styles.chooseBank}>
-        <h4>{t("chooseBank")}:</h4>
-        <div className={styles.bankList}>
-          <div className={styles.bankWrapper}>
-            <button
-              className={styles.bankBtn}
-              style={{
-                backgroundImage: `url('https://apishop.irancell.ir/static/v2/images/bankIcon/PSMN.png')`
-              }}
-            ></button>
-          </div>
-          <div className={styles.bankWrapper}>
-            <button
-              className={`${styles.bankBtn} ${styles.deactive}`}
-              style={{
-                backgroundImage: `url('https://apishop.irancell.ir/static/v2/images/bankIcon/MLT.png')`
-              }}
-            ></button>
+      {valid ? (
+        <div className={styles.chooseBank}>
+          <h4>{t("chooseBank")}:</h4>
+          <div className={styles.bankList}>
+            <div className={styles.bankWrapper}>
+              <button
+                className={styles.bankBtn}
+                style={{
+                  backgroundImage: `url('https://apishop.irancell.ir/static/v2/images/bankIcon/PSMN.png')`
+                }}
+              ></button>
+            </div>
+            <div className={styles.bankWrapper}>
+              <button
+                className={`${styles.bankBtn} ${styles.deactive}`}
+                style={{
+                  backgroundImage: `url('https://apishop.irancell.ir/static/v2/images/bankIcon/MLT.png')`
+                }}
+              ></button>
+            </div>
           </div>
         </div>
-      </div>
+      ) : null}
 
       <div className="mt-20">
         <SubmitButton
@@ -159,9 +169,11 @@ const Form = () => {
           onClick={handleSubmit}
         />
       </div>
-      <Alert type="danger">
-        <BsExclamationTriangle /> <span>شماره معتبر نمی‌باشد</span>
-      </Alert>
+      {error ? (
+        <Alert type="danger">
+          <BsExclamationTriangle /> <span>{t(error)}</span>
+        </Alert>
+      ) : null}
     </div>
   );
 };

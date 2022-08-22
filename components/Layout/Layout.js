@@ -1,4 +1,5 @@
 import Head from "next/head";
+import { useRouter } from "next/router";
 
 import Header from '../Header/Header';
 
@@ -6,13 +7,15 @@ import styles from "./Layout.module.css";
 
 
 export default function Layout({ children }) {
+  const router = useRouter();
+
   return (
     <div>
       <Head>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="shortcut icon" href={`/images/${router.locale}/180.png`}></link>
         <meta
           name="description"
-          content="Learn how to build a personal website using Next.js"
+          content="Irancell Online Shop"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta

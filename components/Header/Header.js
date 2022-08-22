@@ -35,7 +35,7 @@ const Header = () => {
     document.querySelector("html").setAttribute("lang", lang);
 
     async function fetchMenuItems() {
-      fetch(`http://localhost:5500/api/settings?lang=${router.locale}`)
+      fetch(`https://joyous-sweater-fish.cyclic.app/api/settings?lang=${router.locale}`)
         .then(response => response.json())
         .then(data => {
           setMenuItems(data);

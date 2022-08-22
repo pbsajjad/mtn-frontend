@@ -1,4 +1,5 @@
 {
+  "metaTitle": "فروشگاه آنلاین ایرانسل",
   "businessCustomer": "مشترکین سازمانی",
   "cart": "سبد خرید",
   "profile": "پروفایل",
@@ -38,5 +39,6 @@
   "and": "و",
   "chooseBank": "انتخاب بانک",
   "invalidMobile": "شماره موبایل معتبر نیست!",
-  "invalidAmount": "مبلغ شارژ را اصلاح کنید!"
+  "invalidAmount": "مبلغ شارژ را اصلاح کنید!",
+  "invalidEmail": "آدرس ایمیل معتبر نیست!"
 }

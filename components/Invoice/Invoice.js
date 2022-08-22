@@ -37,6 +37,7 @@ const Invoice = () => {
         />
         <InvoiceItem
           title={t("chargeAmountWithTax")}
+          detailedTitle={t("chargeAmountWithTaxLong")}
           description={`${t("built-in:number", {
             val: calculateChargeAmountWithTax()
           })} ${t("currency")}`}

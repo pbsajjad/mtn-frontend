@@ -4,8 +4,6 @@ import { appWithTranslation } from "next-i18next";
 
 import AppContext from "../context/AppContext";
 
-import Layout from "../components/Layout/Layout";
-
 import "bootstrap/dist/css/bootstrap.css";
 import "../styles/global.css";
 
@@ -49,9 +47,7 @@ function App({ Component, pageProps }) {
 
   return (
     <AppContext.Provider value={value}>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
+      <Component {...pageProps} />
     </AppContext.Provider>
   );
 }
